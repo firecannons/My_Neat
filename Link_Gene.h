@@ -3,11 +3,12 @@
 
 class Link_Gene
 {
-    int in_neuron;
-    int out_neuron;
     double weight;
+    double current_value;
     bool enabled;
     int innov;
+    int in_neuron;
+    int out_neuron;
 
 public:
 
@@ -33,6 +34,7 @@ public:
         weight = lg.weight;
         enabled = lg.enabled;
         innov = lg.innov;
+        current_value = lg.current_value;
         return *this;
     }
 
@@ -61,12 +63,13 @@ public:
         return weight;
     }
 
-    void set_weight( int in_weight )
+    void set_weight( double in_weight )
     {
         weight = in_weight;
     }
 
-
+    void set_current_value( double in_current_value ) { current_value = in_current_value ; }
+    double get_current_value( ) { return current_value ; }
 
 };
 
