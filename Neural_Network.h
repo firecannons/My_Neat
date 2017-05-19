@@ -198,40 +198,64 @@ public:
         }
     }
 
-    void evolve( )
+    void evolve_link_small_mutate( unsigned int k )
     {
-        //printf( "in evolve_weights\n" ) ;
-        //fflush( stdout );
+        double rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
+        if( rand_real < LINK_SMALL_MUTATE_CHANCE )
+        {
+            double rand_val = static_cast<double>( rand( ) ) ;
+            links[ k ].set_weight( links[ k ].get_weight( ) - 0.1 + ( rand_val / RAND_MAX) * 0.2 ) ;
+            //printf( "rand_val: %f   weight: %f  link: %u\n" , rand_val, links[ k ].get_weight( ), k ) ;
+            //fflush( stdout );
+        }
+    }
+
+    void evolve_link_large_mutate( unsigned int index )
+    {
+        double rand_real = 0;
+        rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
+        if( rand_real < LINK_LARGE_MUTATE_CHANCE )
+        {
+            double rand_val = static_cast<double>( rand( ) ) ;
+            links[ index ].set_weight( links[ index ].get_weight( ) - 5 + ( rand_val / RAND_MAX) * 10 ) ;
+            //printf( "rand_val: %f   weight: %f  link: %u\n" , rand_val, links[ k ].get_weight( ), k ) ;
+            //fflush( stdout );
+        }
+    }
+
+    void evolve_node_act_func( unsigned int k )
+    {
+        double rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
+        if( rand_real < NODE_FUNC_MUTATE_CHANCE )
+        {
+            rand_real = static_cast<double>( rand( ) ) / RAND_MAX * ( FUNC_MAX - FUNC_MIN ) + FUNC_MIN ;
+            nodes[ k ].set_act_func( round( rand_real ) ) ;
+        }
+    }
+
+    void evolve_links( )
+    {
         for( unsigned int k = 0 ; k < links.size( ) ; k = k + 1 )
         {
-            double rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
-            if( rand_real < LINK_SMALL_MUTATE_CHANCE )
-            {
-                double rand_val = static_cast<double>( rand( ) ) ;
-                links[ k ].set_weight( links[ k ].get_weight( ) - 0.1 + ( rand_val / RAND_MAX) * 0.2 ) ;
-                //printf( "rand_val: %f   weight: %f  link: %u\n" , rand_val, links[ k ].get_weight( ), k ) ;
-                //fflush( stdout );
-            }
+            evolve_link_small_mutate( k ) ;
 
-            rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
-            if( rand_real < LINK_LARGE_MUTATE_CHANCE )
-            {
-                double rand_val = static_cast<double>( rand( ) ) ;
-                links[ k ].set_weight( links[ k ].get_weight( ) - 5 + ( rand_val / RAND_MAX) * 10 ) ;
-                //printf( "rand_val: %f   weight: %f  link: %u\n" , rand_val, links[ k ].get_weight( ), k ) ;
-                //fflush( stdout );
-            }
+            evolve_link_large_mutate( k ) ;
         }
+    }
 
+    void evolve_nodes( )
+    {
         for( unsigned int k = 0 ; k < nodes.size( ) ; k = k + 1 )
         {
-            double rand_real = static_cast<double>( rand( ) ) / RAND_MAX ;
-            if( rand_real < NODE_FUNC_MUTATE_CHANCE )
-            {
-                rand_real = static_cast<double>( rand( ) ) / RAND_MAX * ( FUNC_MAX - FUNC_MIN ) + FUNC_MIN ;
-                nodes[ k ].set_act_func( round( rand_real ) ) ;
-            }
+            evolve_node_act_func( k );
         }
+    }
+
+    void evolve( )
+    {
+        evolve_links( ) ;
+
+        evolve_nodes( ) ;
     }
 
     Neural_Network( const Neural_Network & n )
@@ -268,6 +292,8 @@ public:
     {
         return num_output;
     }
+    void set_is_evaluated( bool in_is_evaluated ) { is_evaluated = in_is_evaluated ; }
+    bool get_is_evaluated( ) { return is_evaluated ; }
 
     void reset( )
     {

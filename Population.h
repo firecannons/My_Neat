@@ -3,6 +3,8 @@
 
 const double KILL_AMOUNT = 0.2;
 
+const bool SKIP_NET_IF_EVALUATED = true;
+
 #include "Neural_Network.h"
 #include "Xor_Game.h"
 
@@ -82,6 +84,7 @@ public:
             nn.reset( );
         }
         average = average / num_runs;
+        nn.set_is_evaluated( true ) ;
         return average;
     }
 
@@ -89,11 +92,14 @@ public:
     {
         for(unsigned int k = 0; k < nets.size( ); k = k + 1)
         {
-            double average = 0;
+            if( nets[ k ]->get_is_evaluated( ) == false )
+            {
+                double average = 0;
 
-            average = average_over_runs( num_runs, *( nets[ k ] ) );
+                average = average_over_runs( num_runs, *( nets[ k ] ) );
 
-            nets[ k ]->set_fitness( average );
+                nets[ k ]->set_fitness( average );
+            }
         }
 
 
@@ -138,6 +144,7 @@ public:
         for( unsigned int k = start_index ; k < nets.size( ) ; k = k + 1 )
         {
             nets[ k ]->evolve( );
+            nets[ k ]->set_is_evaluated( false ) ;
         }
     }
 
