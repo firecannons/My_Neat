@@ -1,20 +1,30 @@
 #ifndef LINK_GENE_H
 #define LINK_GENE_H
 
+#include <vector>
+#include <queue>
+#include <set>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+#include <fstream>
+
 class Link_Gene
 {
     double weight;
     double current_value;
     bool enabled;
-    int innov;
-    int in_neuron;
-    int out_neuron;
+    unsigned innov;
+    unsigned int in_neuron;
+    unsigned int out_neuron;
 
 public:
 
     Link_Gene( )
     {
-
+        enabled = true;
+        innov = 0;
     }
 
     ~Link_Gene( )
@@ -38,7 +48,7 @@ public:
         return *this;
     }
 
-    int get_in_neuron( )
+    unsigned int get_in_neuron( )
     {
         return in_neuron;
     }
@@ -48,7 +58,7 @@ public:
         in_neuron = in_in_neuron;
     }
 
-    int get_out_neuron( )
+    unsigned int get_out_neuron( )
     {
         return out_neuron;
     }
@@ -70,7 +80,10 @@ public:
 
     void set_current_value( double in_current_value ) { current_value = in_current_value ; }
     double get_current_value( ) { return current_value ; }
-
+    unsigned int get_innov_number( ) { return innov ; }
+    bool get_enabled( ) { return enabled ; }
+    void set_enabled( bool in_enabled ) { enabled = in_enabled ; }
+    void set_fin_innov( bool in_innov ) { innov = in_innov ; }
 };
 
 #endif

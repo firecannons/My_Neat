@@ -20,8 +20,8 @@ const int FUNC_ABS = 6;
 const int FUNC_SQUARE = 7;
 const int FUNC_MULT = 8;
 const int FUNC_LINEAR = 9;
-const int FUNC_ZERO = 10;
-const int FUNC_MAX = 10;
+//const int FUNC_ZERO = 10;
+const int FUNC_MAX = 9;
 const int FUNC_MIN = 0;
 
 const double E = 2.71828;
@@ -37,8 +37,8 @@ double zero( double input ) ;
 
 class Node_Gene
 {
-    int type;
-    int act_func;
+    unsigned int type;
+    unsigned int act_func;
 
 public:
     vector< unsigned int > in_link_indexes ;
@@ -66,12 +66,12 @@ public:
         return *this;
     }
 
-    void set_type( int in_type )
+    void set_type( unsigned int in_type )
     {
         type = in_type;
     }
 
-    int get_type( )
+    unsigned int get_type( )
     {
         return type;
     }
@@ -111,10 +111,10 @@ public:
         {
             output_value = square( input_value ) ;
         }
-        if( act_func == FUNC_ZERO )
+        /*if( act_func == FUNC_ZERO )
         {
             output_value = zero( input_value );
-        }
+        }*/
 
         if( act_func == FUNC_MULT )
         {
@@ -159,8 +159,8 @@ public:
         return output_value ;
     }
 
-    void set_act_func( int in_act_func ) { act_func = in_act_func ; }
-    int get_act_func( ) { return act_func ; }
+    void set_act_func( unsigned int in_act_func ) { act_func = in_act_func ; }
+    unsigned int get_act_func( ) { return act_func ; }
     void add_in_link_index( unsigned int index ) { in_link_indexes.push_back( index ) ; }
     void add_out_link_index( unsigned int index ) { out_link_indexes.push_back( index ) ; }
 };

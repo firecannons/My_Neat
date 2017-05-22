@@ -1,19 +1,21 @@
 #ifndef POPULATION_H
 #define POPULATION_H
 
-const double KILL_AMOUNT = 0.2;
+const double KILL_AMOUNT = 0.1;
+const double MUTATE_AMOUNT = 0.1;
 
 const bool SKIP_NET_IF_EVALUATED = true;
 
 #include "Neural_Network.h"
 #include "Xor_Game.h"
+#include <cstdio>
 
 class Population
 {
+public:
+
     vector< Neural_Network * > nets;
     double best_fitness ;
-
-public:
 
     Population( )
     {
@@ -85,6 +87,27 @@ public:
         }
         average = average / num_runs;
         nn.set_is_evaluated( true ) ;
+        /*if( nn.nodes.size( ) > 4 )
+        {
+            printf( "ooh, %u nodes %u links %u node_act_order_size \n" , nn.nodes.size( ), nn.links.size( ) , nn.node_act_order.size( ) ) ;
+            fflush( stdout ) ;
+            printf( "ooh, %f average \n " , average ) ;
+            fflush( stdout ) ;
+            for( unsigned int k = 0 ; k < nn.node_act_order.size( ) ; k = k + 1 )
+            {
+                printf( " %u %u , " , nn.node_act_order[ k ], nn.nodes[ nn.node_act_order[ k ] ].get_act_func( ) ) ;
+                fflush( stdout ) ;
+            }
+            printf( "\n" ) ;
+            fflush( stdout ) ;
+        }
+        for( unsigned int k = 0 ; k < nn.nodes[ 3 ].in_link_indexes.size( ) ; k = k + 1 )
+        {
+            printf( " %u , " , nn.links[ nn.nodes[ 3 ].in_link_indexes[ k ] ].get_in_neuron( ) ) ;
+            fflush( stdout ) ;
+        }
+        printf( "\n" ) ;
+        fflush( stdout ) ;*/
         return average;
     }
 
@@ -128,7 +151,12 @@ public:
             nets[ start_index + k ] = new Neural_Network( *( nets[ k ] ) ) ;
         }
 
-        evolve( start_index );
+        printf( " num of nodes in best: %u     num links in best: %u \n" , nets[ 0 ]->nodes.size( ), nets[ 0 ]->links.size( ) ) ;
+        fflush( stdout ) ;
+
+        unsigned int mutate_count = nets.size( ) * MUTATE_AMOUNT;
+        unsigned int mutate_start_index = nets.size( ) - mutate_count ;
+        evolve( mutate_start_index );
     }
 
     void reset_nets( )

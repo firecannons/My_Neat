@@ -2,32 +2,63 @@
 1494102366 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.c
 	<stdio.h>
 
-1495151381 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.cpp
-	<cstdio>
-	<cstdlib>
-	<ctime>
+1495397488 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.cpp
 	"Population.h"
+	<iostream>
 
-1495155442 /home/test/Desktop/Programming/NEAT/My_Neat/Population.h
+1495397688 /home/test/Desktop/Programming/NEAT/My_Neat/Population.h
 	"Neural_Network.h"
 	"Xor_Game.h"
+	<cstdio>
 
-1495164220 /home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
-	<vector>
-	<queue>
-	<set>
+1495397599 /home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
 	"Node_Gene.h"
 	"Link_Gene.h"
-	<cstdlib>
 
-1495153396 /home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
+1495337769 /home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
 	<vector>
 	<cmath>
 	"Link_Gene.h"
 
-1495148466 /home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
+1495343256 /home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
+	<vector>
+	<queue>
+	<set>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	<algorithm>
+	<fstream>
 
-1495152296 /home/test/Desktop/Programming/NEAT/My_Neat/Xor_Game.h
+1495335674 /home/test/Desktop/Programming/NEAT/My_Neat/Xor_Game.h
+	"Neural_Network.h"
+	<cmath>
+
+1495343256 source:/home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
+	<vector>
+	<queue>
+	<set>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	<algorithm>
+	<fstream>
+
+1495397599 source:/home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
+	"Node_Gene.h"
+	"Link_Gene.h"
+
+1495337769 source:/home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
+	<vector>
+	<cmath>
+	"Link_Gene.h"
+
+1495397688 source:/home/test/Desktop/Programming/NEAT/My_Neat/Population.h
+	"Neural_Network.h"
+	"Xor_Game.h"
+	<cstdio>
+
+1495335674 source:/home/test/Desktop/Programming/NEAT/My_Neat/Xor_Game.h
 	"Neural_Network.h"
 	<cmath>
 

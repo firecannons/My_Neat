@@ -17,41 +17,57 @@ public:
         vector<double> solution;
         input.resize( nn.get_num_input( ) );
         solution.resize( nn.get_num_output( ) );
+        vector< unsigned int > runs ;
+        for( unsigned int k = 0 ; k < 4 ; k = k + 1 )
+            runs.push_back( k ) ;
+        random_shuffle( runs.begin( ) , runs.end( ) ) ;
 
-        //printf( "weights: %f %f %f \n", nn.links[ 0 ].get_weight( ), nn.links[ 1 ].get_weight( ), nn.links[ 2 ].get_weight( ) ) ;
-        //fflush( stdout ) ;
+        for( unsigned int k = 0 ; k < 4 ; k = k + 1 )
+        {
+            if( runs[ k ] == 0 )
+            {
+                input[ 0 ] = 0;
+                input[ 1 ] = 0;
+                input[ 2 ] = 1;
+                solution[ 0 ] = 0;
+                nn_output = nn.run( input );
+                fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) * MAX_FITNESS ) ;
+            }
 
-        //nn.links[ 2 ].set_weight( 0 );
+            if( runs[ k ] == 1 )
+            {
+                input[ 0 ] = 1;
+                input[ 1 ] = 0;
+                input[ 2 ] = 1;
+                solution[ 0 ] = 1;
+                nn_output = nn.run( input );
+                fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) * MAX_FITNESS ) ;
+            }
 
-        input[ 0 ] = 0;
-        input[ 1 ] = 0;
-        input[ 2 ] = 1;
-        solution[ 0 ] = 0;
-        nn_output = nn.run( input );
-        fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) ) ;
+            if( runs[ k ] == 2 )
+            {
+                input[ 0 ] = 0;
+                input[ 1 ] = 1;
+                input[ 2 ] = 1;
+                solution[ 0 ] = 1;
+                nn_output = nn.run( input );
+                fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) * MAX_FITNESS ) ;
+            }
 
-        input[ 0 ] = 1;
-        input[ 1 ] = 0;
-        input[ 2 ] = 1;
-        solution[ 0 ] = 1;
-        nn_output = nn.run( input );
-        fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) ) ;
-
-        input[ 0 ] = 0;
-        input[ 1 ] = 1;
-        input[ 2 ] = 1;
-        solution[ 0 ] = 1;
-        nn_output = nn.run( input );
-        fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) ) ;
-
-        input[ 0 ] = 1;
-        input[ 1 ] = 1;
-        input[ 2 ] = 1;
-        solution[ 0 ] = 2;
-        nn_output = nn.run( input );
-        fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) ) ;
+            if( runs[ k ] == 3 )
+            {
+                input[ 0 ] = 1;
+                input[ 1 ] = 1;
+                input[ 2 ] = 1;
+                solution[ 0 ] = 0;
+                nn_output = nn.run( input );
+                fitness = fitness + ( MAX_FITNESS - fabs( solution[ 0 ] - nn_output[ 0 ] ) * MAX_FITNESS ) ;
+            }
+        }
 
         fitness = fitness / 4 ;
+
+        fitness = fitness - ( nn.links.size( ) + nn.nodes.size( ) ) / 100 ;
 
         return fitness;
     }

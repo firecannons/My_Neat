@@ -19,10 +19,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Link_Gene.h" />
-		<Unit filename="Neural_Network.h" />
-		<Unit filename="Node_Gene.h" />
-		<Unit filename="Population.h" />
+		<Unit filename="Link_Gene.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Neural_Network.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Node_Gene.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Population.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="Xor_Game.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
