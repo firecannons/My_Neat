@@ -13,7 +13,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O3" />
+					<Add option="-std=c++11" />
 				</Compiler>
+				<Linker>
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+					<Add library="sfml-graphics" />
+				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
@@ -28,12 +34,13 @@
 		<Unit filename="Node_Gene.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="Pong_Game.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Population.h">
 			<Option compile="1" />
 		</Unit>
-		<Unit filename="Xor_Game.h">
-			<Option compile="1" />
-		</Unit>
+		<Unit filename="Random_gen.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

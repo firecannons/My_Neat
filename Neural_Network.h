@@ -14,8 +14,8 @@ const double NODE_FUNC_MUTATE_CHANCE = 0.05;
 const double ADD_NODE_CHANCE = 0.003; // Per link
 const double ADD_LINK_CHANCE = 0.003; // Per pairs of nodes
 
-const double MAX_WEIGHT = 5 ;
-const double MIN_WEIGHT = -5 ;
+const double MAX_WEIGHT = 5000 ;
+const double MIN_WEIGHT = -5000 ;
 
 const int NODE_MAX = 5000 ;
 const int LINK_MAX = 25000 ;
@@ -73,7 +73,7 @@ public:
         }
         for( unsigned int k = 0 ; k < in_num_input + in_num_hidden + in_num_output ; k = k + 1 )
         {
-            nodes[ k ].set_act_func( FUNC_RELU ) ;
+            nodes[ k ].set_act_func( FUNC_LINEAR ) ;
         }
 
         unsigned int link_index = 0;
@@ -293,7 +293,7 @@ public:
                     links[ links.size( ) - 1 ].set_weight( 0 ) ;
                     links[ k ].set_weight( 0 ) ;
 
-                    nodes[ nodes.size( ) - 1 ].set_act_func( FUNC_RELU ) ;
+                    nodes[ nodes.size( ) - 1 ].set_act_func( FUNC_TANH ) ;
                     nodes[ nodes.size( ) - 1 ].set_type( HIDDEN_TYPE ) ;
 
                     nodes[ nodes.size( ) - 1 ].add_in_link_index( links.size( ) - 2 ) ;
@@ -349,7 +349,7 @@ public:
                             link_currently = true;
                     }
 
-                    if( link_currently == false )
+                    //if( link_currently == false )
                     {
                         links.push_back( Link_Gene() );
                         links[ links.size( ) - 1 ].set_weight( 0 ) ;

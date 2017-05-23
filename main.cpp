@@ -1,15 +1,13 @@
 #include "Population.h"
-#include <iostream>
-using namespace std;
 
-const int NUM_NETS = 1000;
-const int NUM_RUNS = 10;
+const int NUM_NETS = 250;
+const int NUM_RUNS = 1;
 
 int main()
 {
     srand( time( NULL ) ) ;
     fflush( stdout ) ;
-    Population p( NUM_NETS, 3, 2, 1 );
+    Population p( NUM_NETS, 9, 0, 1 );
 
     printf( " after population constructor \n " ) ;
     fflush( stdout ) ;
@@ -17,26 +15,19 @@ int main()
     //p.nets[ 0 ]->load( "winner_net.nn" ) ;
 
     unsigned int generation = 0;
-    while( p.get_best_fitness( ) < MAX_FITNESS - 0.5 )
+    while( p.get_best_fitness( ) < MAX_FITNESS - 5 )
     {
         p.epoc( NUM_RUNS ) ;
-        printf( "Best fitness = %f of generation %u\n" , p.get_best_fitness(), generation );
+        printf( "Best fitness = %f <= ( MAX_FITNESS = %u) of generation %u\n" , p.get_best_fitness(), MAX_FITNESS, generation );
         fflush( stdout ) ;
         generation = generation + 1;
+        p.nets[ 0 ]->save( "winner_net.nn" ) ;
     }
 
-    //p.nets[ 0 ]->save( "winner_net.nn" ) ;
-
-    while( true )
-    {
-        vector< double > input( 3 ) ;
-        vector< double > output;
-        cin >> input[ 0 ] ;
-        cin >> input[ 1 ] ;
-        cin >> input[ 2 ] ;
-        output = p.nets[ 0 ]->run( input ) ;
-        cout << output[ 0 ] << endl;
-    }
+    sf::RenderWindow main_window( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT ) , "SFML window") ;
+    main_window.setFramerateLimit(60) ;
+    Game game ;
+    game.show_off( * ( p.nets[ 0 ] ) , main_window ) ;
 
     printf("Buffered, will be flushed");
     fflush(stdout);

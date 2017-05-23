@@ -2,63 +2,68 @@
 1494102366 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.c
 	<stdio.h>
 
-1495397488 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.cpp
+1495521072 source:/home/test/Desktop/Programming/NEAT/My_Neat/main.cpp
 	"Population.h"
-	<iostream>
 
-1495397688 /home/test/Desktop/Programming/NEAT/My_Neat/Population.h
+1495521651 /home/test/Desktop/Programming/NEAT/My_Neat/Population.h
 	"Neural_Network.h"
-	"Xor_Game.h"
-	<cstdio>
+	"Pong_Game.h"
 
-1495397599 /home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
+1495523499 /home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
 	"Node_Gene.h"
 	"Link_Gene.h"
 
-1495337769 /home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
-	<vector>
-	<cmath>
+1495502648 /home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
 	"Link_Gene.h"
 
-1495343256 /home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
+1495491548 /home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
 	<vector>
 	<queue>
 	<set>
 	<cstdio>
-	<cstdlib>
-	<ctime>
 	<algorithm>
 	<fstream>
+	<cmath>
+	"SFML/Graphics.hpp"
+	"Random_gen.h"
 
 1495335674 /home/test/Desktop/Programming/NEAT/My_Neat/Xor_Game.h
 	"Neural_Network.h"
 	<cmath>
 
-1495343256 source:/home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
+1495491548 source:/home/test/Desktop/Programming/NEAT/My_Neat/Link_Gene.h
 	<vector>
 	<queue>
 	<set>
 	<cstdio>
-	<cstdlib>
-	<ctime>
 	<algorithm>
 	<fstream>
+	<cmath>
+	"SFML/Graphics.hpp"
+	"Random_gen.h"
 
-1495397599 source:/home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
+1495523499 source:/home/test/Desktop/Programming/NEAT/My_Neat/Neural_Network.h
 	"Node_Gene.h"
 	"Link_Gene.h"
 
-1495337769 source:/home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
-	<vector>
-	<cmath>
+1495502648 source:/home/test/Desktop/Programming/NEAT/My_Neat/Node_Gene.h
 	"Link_Gene.h"
 
-1495397688 source:/home/test/Desktop/Programming/NEAT/My_Neat/Population.h
+1495521651 source:/home/test/Desktop/Programming/NEAT/My_Neat/Population.h
 	"Neural_Network.h"
-	"Xor_Game.h"
-	<cstdio>
+	"Pong_Game.h"
 
 1495335674 source:/home/test/Desktop/Programming/NEAT/My_Neat/Xor_Game.h
 	"Neural_Network.h"
 	<cmath>
+
+1494096883 /home/test/Desktop/Programming/NEAT/My_Neat/Random_gen.h
+	<random>
+	<chrono>
+
+1495521666 /home/test/Desktop/Programming/NEAT/My_Neat/Pong_Game.h
+	"Neural_Network.h"
+
+1495521666 source:/home/test/Desktop/Programming/NEAT/My_Neat/Pong_Game.h
+	"Neural_Network.h"
 

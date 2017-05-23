@@ -5,10 +5,13 @@
 #include <queue>
 #include <set>
 #include <cstdio>
-#include <cstdlib>
-#include <ctime>
+//#include <cstdlib>
+//#include <ctime>
 #include <algorithm>
 #include <fstream>
+#include <cmath>
+#include "SFML/Graphics.hpp"
+#include "Random_gen.h"
 
 class Link_Gene
 {

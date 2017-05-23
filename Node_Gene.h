@@ -1,8 +1,6 @@
 #ifndef NODE_GENE_H
 #define NODE_GENE_H
 
-#include <vector>
-#include <cmath>
 #include "Link_Gene.h"
 using namespace std;
 
@@ -20,8 +18,9 @@ const int FUNC_ABS = 6;
 const int FUNC_SQUARE = 7;
 const int FUNC_MULT = 8;
 const int FUNC_LINEAR = 9;
-//const int FUNC_ZERO = 10;
-const int FUNC_MAX = 9;
+const int FUNC_MODULO = 10;
+const int FUNC_RECIP = 11;
+const int FUNC_MAX = 11;
 const int FUNC_MIN = 0;
 
 const double E = 2.71828;
@@ -34,6 +33,7 @@ double gaussian( double input ) ;
 double sine( double input ) ;
 double square( double input ) ;
 double zero( double input ) ;
+double recip( double input ) ;
 
 class Node_Gene
 {
@@ -111,6 +111,10 @@ public:
         {
             output_value = square( input_value ) ;
         }
+        if( act_func == FUNC_RECIP )
+        {
+            output_value = recip( input_value ) ;
+        }
         /*if( act_func == FUNC_ZERO )
         {
             output_value = zero( input_value );
@@ -120,22 +124,30 @@ public:
         {
             output_value = input_value;
         }
+        if( act_func == FUNC_MODULO )
+        {
+            output_value = input_value;
+        }
         return output_value;
     }
 
     double sum_or_mult_up( vector < Link_Gene > & links )
     {
         double output_value = 0;
-        if( act_func != FUNC_MULT )
+        if( act_func == FUNC_MODULO )
         {
-            double sum = 0;
-            for( unsigned int k2 = 0 ; k2 < in_link_indexes.size( ) ; k2 = k2 + 1 )
+            if( in_link_indexes.size( ) > 0 )
             {
-                sum = sum + links[ in_link_indexes[ k2 ] ].get_current_value( ) ;
+                double numer = links[ in_link_indexes[ 0 ] ].get_current_value( ) ;
+                double denom = 0;
+                for( unsigned int k2 = 1 ; k2 < in_link_indexes.size( ) ; k2 = k2 + 1 )
+                {
+                    denom = denom + links[ in_link_indexes[ k2 ] ].get_current_value( ) ;
+                }
+                output_value = fmod( numer , denom ) ;
             }
-            output_value = sum;
         }
-        else
+        else if( act_func == FUNC_MULT )
         {
             double product = 0;
             for( unsigned int k2 = 0 ; k2 < in_link_indexes.size( ) ; k2 = k2 + 1 )
@@ -143,6 +155,15 @@ public:
                 product = product * links[ in_link_indexes[ k2 ] ].get_current_value( ) ;
             }
             output_value = product;
+        }
+        else
+        {
+            double sum = 0;
+            for( unsigned int k2 = 0 ; k2 < in_link_indexes.size( ) ; k2 = k2 + 1 )
+            {
+                sum = sum + links[ in_link_indexes[ k2 ] ].get_current_value( ) ;
+            }
+            output_value = sum;
         }
         return output_value ;
     }
@@ -223,6 +244,13 @@ double zero( double input )
     double output = 0 ;
     output = 0;
     return output;
+}
+
+double recip( double input )
+{
+    double output = 0 ;
+    output = 1 / input ;
+    return output ;
 }
 
 #endif

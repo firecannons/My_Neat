@@ -1,14 +1,13 @@
 #ifndef POPULATION_H
 #define POPULATION_H
 
-const double KILL_AMOUNT = 0.1;
-const double MUTATE_AMOUNT = 0.1;
+const double KILL_AMOUNT = 0.3;
+const double MUTATE_AMOUNT = 0.8;
 
-const bool SKIP_NET_IF_EVALUATED = true;
+const bool SKIP_NET_IF_EVALUATED = false;
 
 #include "Neural_Network.h"
-#include "Xor_Game.h"
-#include <cstdio>
+#include "Pong_Game.h"
 
 class Population
 {
@@ -113,9 +112,10 @@ public:
 
     void epoc( int num_runs )
     {
+        //#pragma omp parallel for
         for(unsigned int k = 0; k < nets.size( ); k = k + 1)
         {
-            if( nets[ k ]->get_is_evaluated( ) == false )
+            if( nets[ k ]->get_is_evaluated( ) == false || SKIP_NET_IF_EVALUATED == false )
             {
                 double average = 0;
 
