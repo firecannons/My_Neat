@@ -6,5 +6,6 @@ I recommend using Linux if you are
 * Install SFML<br>`sudo apt-get install libsfml-dev`
 * Install Code::Blocks<br>`sudo apt-get install codeblocks`
 * Download or clone the repository
+* Navigate into the main folder of the repository
 * Open My_Neat.cbp
 * Compile and run in Code::Blocks
