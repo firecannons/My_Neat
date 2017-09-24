@@ -13,11 +13,11 @@ const double BALL_Y_START_SPEED = 10;
 const double P1SPEED = 10;
 // P2 is the Neural Network
 // P1 is a shell AI that just moves with the ball
-const double P2SPEED = 3;
+const double P2SPEED = 10;
 const int LEFT_SIDE = 0;
 const int RIGHT_SIDE = 1;
 
-const unsigned int MAX_FITNESS = 100;
+const unsigned int MAX_FITNESS = 10;
 
 
 class Game;

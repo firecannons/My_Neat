@@ -1,6 +1,6 @@
 #include "Population.h"
 
-const int NUM_NETS = 250;
+const int NUM_NETS = 100;
 const int NUM_RUNS = 1;
 
 int main()
@@ -15,7 +15,7 @@ int main()
     //p.nets[ 0 ]->load( "winner_net.nn" ) ;
 
     unsigned int generation = 0;
-    while( p.get_best_fitness( ) < MAX_FITNESS - 5 )
+    while( p.get_best_fitness( ) < MAX_FITNESS )
     {
         p.epoc( NUM_RUNS ) ;
         printf( "Best fitness = %f <= ( MAX_FITNESS = %u) of generation %u\n" , p.get_best_fitness(), MAX_FITNESS, generation );

@@ -4,7 +4,7 @@
 const double KILL_AMOUNT = 0.3;
 const double MUTATE_AMOUNT = 0.8;
 
-const bool SKIP_NET_IF_EVALUATED = false;
+const bool SKIP_NET_IF_EVALUATED = true;
 
 #include "Neural_Network.h"
 #include "Pong_Game.h"
