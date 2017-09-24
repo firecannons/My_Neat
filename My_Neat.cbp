@@ -8,11 +8,11 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/My_Neat" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../My_Neat" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O3" />
 					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
@@ -23,6 +23,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-O3" />
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Link_Gene.h">
