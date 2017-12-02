@@ -3,7 +3,7 @@ This is a version of [NeuroEvolution of Augmenting Topologies (NEAT)](https://en
  made by me.  It's far from done but you can try it out using the pong sample anyway.
 
 ## The Pong Sample
-The Pong Sample will evolve a networks until one achieves a perfect 10/10 game, and then shows it on the screen playing matches.
+The Pong Sample will evolve the networks to play Pong.  It will continue evolving te networks until one achieves a perfect 10/10 game, and then shows that network on the screen playing matches.
 ### Requirements
 * A Linux distro
 * [Code::Blocks](http://www.codeblocks.org/)
