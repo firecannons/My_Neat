@@ -17,4 +17,4 @@ The Pong Sample will evolve the networks to play Pong.  It will continue evolvin
 * Compile and run in Code::Blocks
 
 ## Background
-NEAT is a method proposed by Ken Stanley for optimizing neural networks.  It adjusts the topology of the neural networks as well as their weights.
+[NEAT](https://www.cs.ucf.edu/~kstanley/neat.html) is a method proposed by Ken Stanley et al. for optimizing neural networks.  It adjusts the topology of the neural networks as well as their weights.
